@@ -9,3 +9,4 @@ Things we still need to do:
 - Create a way to run tests
 - Good ESBUILD configs
 - Full Typescript support and type safety
+- CLI to initialize a new project with the framework you want.
