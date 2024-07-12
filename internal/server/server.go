@@ -3,14 +3,20 @@ package server
 import (
 	"log"
 	"net/http"
+	"path/filepath"
 
 	"github.com/katungi/gut/internal/bundler"
 )
 
 func Start() {
-	bundleErr := bundler.Bundle("../../example/src/index.js", "./public/out.js")
+	entryFile := filepath.Join("example", "src", "index.js")
+	outputFile := filepath.Join("public", "out.js")
+	bundleErr := bundler.Bundle(entryFile, outputFile)
 	if bundleErr != nil {
-		log.Fatalf("could not bundle the JavaScript")
+		log.Printf(
+			"could not bundle the JavaScript files: %v\n",
+			bundleErr,
+		)
 	}
 	fs := http.FileServer(http.Dir("./public"))
 	http.Handle("/", fs)
