@@ -12,7 +12,7 @@ func Start() {
 
 	err := http.ListenAndServe(":6699", nil)
 
-	if err != nil {
+	if err != nil {  
 		log.Fatal(err)
 	}
 }
